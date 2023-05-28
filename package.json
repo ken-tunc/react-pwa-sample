@@ -1,0 +1,17 @@
+{
+  "name": "react-pwa-sample",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:webapp": "npm run dev -w webapp",
+    "build:functions": "npm run build -w functions",
+    "build:webapp": "npm run build -w webapp",
+    "lint:functions": "npm run lint -w functions",
+    "lint:webapp": "npm run lint -w webapp",
+    "deploy:functions": "npm run deploy -w functions"
+  },
+  "workspaces": [
+    "functions",
+    "webapp"
+  ],
+  "private": false
+}
