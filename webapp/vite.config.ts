@@ -13,7 +13,7 @@ export default defineConfig({
       injectRegister: false,
       strategies: 'injectManifest',
       srcDir: 'src',
-      filename: 'firebase-messaging-sw.ts',
-    })
-  ],
+      filename: 'sw.ts',
+    }),
+  ]
 })
