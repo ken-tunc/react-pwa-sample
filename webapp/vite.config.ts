@@ -6,6 +6,14 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({ registerType: 'autoUpdate' })
+    VitePWA({
+      devOptions: {
+        enabled: true,
+      },
+      injectRegister: false,
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'firebase-messaging-sw.ts',
+    })
   ],
 })
