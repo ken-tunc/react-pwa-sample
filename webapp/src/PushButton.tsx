@@ -9,7 +9,9 @@ export const PushButton: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const fcmToken = await getToken(getMessaging());
+      const fcmToken = await getToken(getMessaging(), {
+        vapidKey: 'BOa3WLSqce9xmodqBoNfaO9oPvx-rzZhN3-IJ5N2gRCKyj-7yf1yzzXxluhqsMFSJnv5NTb1sPaPAD4d3RFDIvo',
+      });
       setFcmToken(fcmToken);
       setIsLoading(false);
     })();
