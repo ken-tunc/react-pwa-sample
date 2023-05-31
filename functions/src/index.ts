@@ -7,13 +7,26 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import {onRequest} from "firebase-functions/v2/https";
-import * as logger from "firebase-functions/logger";
+import { HttpsError, onCall } from "firebase-functions/v2/https";
+import * as admin from "firebase-admin";
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+admin.initializeApp();
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+export const push = onCall<{
+  fcmToken: string;
+  message: string;
+}>({ region: 'asia-northeast1' }, async ({ data, auth }) => {
+  if (!auth) {
+    throw new HttpsError('unauthenticated', 'You must be signed in to use this feature!')
+  }
+
+  const payload = {
+    notification: {
+      title: 'Hello from React PWA',
+      body: data.message,
+    },
+    token: data.fcmToken,
+  };
+
+  await admin.messaging().send(payload);
+});

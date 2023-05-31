@@ -16,6 +16,7 @@
     }
   ],
   "hosting": {
+    "site": "kentunc-pwa-sample",
     "public": "webapp/dist",
     "ignore": [
       "firebase.json",
